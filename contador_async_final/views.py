@@ -1,10 +1,11 @@
 from django.http import HttpResponse
 import asyncio
 
-# View assíncrona
-async def contador_view(request):
-    resposta = "<h1>Contador Assíncrono</h1>"
-    for i in range(1, 11):
-        resposta += f"Segundos passados: {i}<br>"
-        await asyncio.sleep(1)  
-    return HttpResponse(resposta)
+async def contador(request):
+    for i in range(1, 6):
+        print(f"Contando... {i}")
+        await asyncio.sleep(1)
+    return HttpResponse("Contagem finalizada ✅")
+
+def home(request):
+    return HttpResponse("Bem-vindo ao Async Contador 🚀")
